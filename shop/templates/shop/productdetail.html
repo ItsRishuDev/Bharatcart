@@ -1,0 +1,142 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Product Detail
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+
+<style>
+        .single_product_details select {
+            border: 1px solid #138808;
+            display: block;
+            padding: 10px;
+        }
+
+        select:focus {
+            outline: none;
+        }
+
+        img[alt="Small-Img"]:hover {
+            cursor: pointer;
+        }
+
+        .single_product_details img {
+            width: 100%;
+            height: auto;
+        }
+
+        .single_product_details input {
+            width: 60px;
+            height: 40px;
+            padding-left: 10px;
+            font-size: 20px;
+            margin-right: 10px;
+            border: 1px solid #138808;
+        }
+    </style>
+
+{% endblock css %}
+
+
+{% block body %}
+    
+    <!-- || Single Product Detail -->
+    <section>
+        <div class="container single_product_details mt-5">
+            <div class="row">
+
+                <!-- Image Section -->
+                <div class="col-lg-5 offset-lg-1 mt-5">
+                    <img src="/media/{{product.product_img_1}}" alt="Main-Img" id="productImg" />
+
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <img src="/media/{{product.product_img_1}}" class="smallImg" alt="Small-Img" />
+                        </div>
+                        <div class="col-3">
+                            <img src="/media/{{product.product_img_2}}" class="smallImg" alt="Small-Img" />
+                        </div>
+                        <div class="col-3">
+                            <img src="/media/{{product.product_img_3}}" class="smallImg" alt="Small-Img" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Textual Details Section -->
+                <div class="col-lg-6 px-lg-5 mt-5">
+                    <p><a href="/">Home</a> / T-Shirt</p>
+                    <h1>{{product.product_name}}</h1>
+                    <h4 class="my-3">&#8377; {{product.product_price}}</h4>
+
+                    <div class="mt-3">
+                        <input type="number" value="1" min="0" id="quantity" />
+                    </div>
+
+                    <div class="mt-1">
+                        <a href="/addcart/{{product.product_id}}" class="btn">ADD TO CART</a>
+                    </div>
+
+                    <h3>Product Details <i class="fa fa-indent text-success ml-4"></i></h3>
+                    <p>{{product.product_desc}}</p>
+
+                    <h4>Product By: </h4>
+                    <p>{{product.product_owner.first_name}}</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- || RELATED Products -->
+      <div class="container mt-5">
+    <h2 class="section_head">RELATED PRODUCTS</h2>
+
+    <div class="container mt-5 products_section">
+      <div class="row">
+      {% for item in prodcat %}
+        <div class="col-lg-3 col-md-4 col-sm-6 px-lg-4">
+        <a href="/productdetail/{{item.product_id}}">
+          <div class="card">
+            <img src="/media/{{item.product_img_1}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">
+              <h5 class="product_name">{{item.product_name}}</h5>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-o"></i>
+              </div>
+              <p class="product_price">&#x20B9;  {{item.product_price}}</p>
+              </p>
+            </div>
+          </div>
+        </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock body %}
+
+{% block script %}
+<script>
+
+        // For Product Galary
+        let productImg = document.getElementById('productImg');
+        let smallImg = document.getElementsByClassName('smallImg');
+
+        smallImg[0].onclick = () =>
+            productImg.src = smallImg[0].src;
+        smallImg[1].onclick = () =>
+            productImg.src = smallImg[1].src;
+        smallImg[2].onclick = () =>
+            productImg.src = smallImg[2].src;
+    </script>
+{% endblock script %}

@@ -1,0 +1,146 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+
+{% block title %}Home{% endblock title %}
+
+{% block headerclass %}
+ style="background: radial-gradient(#ffffff, #ffa500);"
+{% endblock headerclass %}
+
+{% block headeritem %}
+<div class="container-fluid py-5">
+      <div class="row pb-4">
+        <!-- Textual Content -->
+        <div class="col-md-6 p-lg-5 home_banner text-md-left text-center mt-3">
+          <h1 class="pt-lg-3">Be Indian<br>Buy Indian</h1>
+          <p>Buy Indian Products and support <br>the Atmanirbhar Bharat Campaign</p>
+          <a href="/product" class="btn">Explore Now &nbsp;<i class="fa fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Made In India Image -->
+        <div class="col-md-4 col-sm-8 offset-md-0 offset-sm-2 mt-3">
+          <img src="{% static 'shop/images/madeinindia.png' %}" width="100%" height="auto" />
+        </div>
+      </div>
+    </div>
+{% endblock headeritem %}
+
+{% block css %}
+<style>
+  p{
+    color: rgba(0, 0, 0, 0.6);
+  }
+</style>
+{% endblock css %}
+
+{% block body %}
+  <div class="container mt-5">
+    <h2 class="section_head">CATEGORIES</h2>
+
+    <div class="container category_section">
+      <div class="row">
+      {% for cat in category %}
+        <div class="col-md-4 col-sm-6 px-lg-4 mt-lg-5 mt-4">
+          <a href="/category/{{cat.category_id}}">
+            <img src="/media/{{cat.category_img}}" class="d-block" />
+            <p>{{cat.category_name}}</p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- || Featured Products -->
+  <div class="container mt-5">
+    <h2 class="section_head">FEATURED PRODUCTS</h2>
+
+    <div class="container mt-5 products_section">
+      <div class="row">
+      {% for item in product %}
+        <div class="col-lg-3 col-md-4 col-sm-6 px-lg-4">
+        <a href="/productdetail/{{item.product_id}}">
+          <div class="card">
+            <img src="/media/{{item.product_img_1}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">
+              <h5 class="product_name">{{item.product_name}}</h5>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-o"></i>
+              </div>
+              <p class="product_price">&#x20B9;  {{item.product_price}}</p>
+              </p>
+            </div>
+          </div>
+        </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+ <!-- || Latest Products -->
+  <div class="container mt-5">
+  {% for prod in allProduct %}
+    <h2 class="section_head">{{prod.product_category.category_name}}</h2>
+
+    <div class="container mt-5 products_section">
+      <div class="row">
+        {% for i in prod %}
+        <div class="col-lg-3 col-md-4 col-sm-6 px-lg-4">
+        <a href="/productdetail/{{i.product_id}}">
+          <div class="card">
+            <img src="/media/{{i.product_img_1}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">
+              <h5 class="product_name">{{i.product_name}}</h5>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-o"></i>
+              </div>
+              <p class="product_price">&#x20B9; {{i.product_price}}</p>
+              </p>
+            </div>
+          </div>
+        </a>  
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  <!-- Offer Banner -->
+  <section>
+    <div class="container-fluid offer_banner">
+      <div class="row">
+
+        <!-- Banner Img -->
+        <div class="col-lg-5 col-md-6 col-sm-10 offset-lg-1 offset-md-0 offset-sm-1">
+          <img src="{% static 'shop/images/madeinindia.png' %}" class="offer_banner_img" alt="Offer-Img" />
+        </div>
+
+        <!-- Banner Data -->
+        <div class="col-lg-6 col-md-6 col-sm-10 offset-md-0 offset-sm-1 pt-5 text-md-left text-center">
+          <p>Sell you Products</p>
+          <h1 class="mt-4 offer_product_name">Join Business</h1>
+          <p class="offer_description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias voluptas magnam eum nulla, tempore eaque
+            vel natus voluptatem iste, expedita quae similique quasi sequi, voluptatibus consectetur repellendus velit
+          </p>
+          <a href="/business/register" class="btn">Join &nbsp;<i class="fa fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+{% endblock body %}

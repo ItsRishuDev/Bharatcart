@@ -1,0 +1,142 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Product Register
+{% endblock title %}
+
+{% block css %}
+ <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static 'shop/business.css' %}">
+{% endblock css %}
+{% block body %}
+
+    <!-- --------------Business Account Dashboard-------------- -->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-3 bg-light pt-3">
+                <div class="py-4">
+                    <h4 class="section_heading mb-3">Quick Links</h4>
+                    <ul class="quick__links ml-4">
+                        <li><a href="/business/account">My Account</a></li>
+                        <li><a href="/business/productregister" class="active">Register New Item</a></li>
+                        <li><a href="/business/registeredproduct">Product Registered</a></li>
+                        <li><a href="/business/ongoingorder">Ongoing Orders</a></li>
+                        <li><a href="/business/pastorder">Past Orders</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Register New Product -->
+            <div class="col-lg-10 col-md-9 pt-3 pb-lg-5 pb-4">
+                <h4 class="section_heading mb-5 mt-4">REGISTRATION OF NEW PRODUCT</h4>
+
+                <form action="" method="POST" name="product_registration" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <div class="px-3">
+
+                        <!-- Product Category -->
+                        <div class="form-group row mt-2">
+                            <label for="product_category" class="col-md-3 col-form-label">Product Category :</label>
+                            <div class="input-group col-md-8" id="product_category">
+                                <select class="custom-select" name="cat">
+                                    <option value="0" disabled selected>- - Select Category - -</option>
+                                    <option value="1">Daily Needs</option>
+                                    <option value="2">Food</option>
+                                    <option value="3">Medical</option>
+                                    <option value="4">Sports</option>
+                                    <option value="5">Fashion</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Product Name -->
+                        <div class="form-group row mt-2">
+                            <label for="product_name" class="col-md-3 col-form-label">Product Name :</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="form-control" id="product_name" value=""
+                                    name="product_name" />
+                            </div>
+                        </div>
+
+                        <!-- Product Description -->
+                        <div class="form-group row mt-2">
+                            <label for="product_description" class="col-md-3 col-form-label">Product Description
+                                :</label>
+                            <div class="input-group col-md-8">
+                                <textarea name="product_description" class="form-control" id="product_description"
+                                    rows="3" required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Product Price -->
+                        <div class="form-group row mt-2">
+                            <label for="product_price" class="col-md-3 col-form-label">Product Price (in Rs.) :</label>
+                            <div class="input-group col-md-8">
+                                <input type="number" class="form-control" id="product_price" value=""
+                                    name="product_price" min="0" required />
+                            </div>
+                        </div>
+
+                        <!-- Product Quantity -->
+                        <div class="form-group row mt-2">
+                            <label for="product_quantity" class="col-md-3 col-form-label">Product Quantity :</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="form-control" id="product_quantity" value=""
+                                    name="product_quantity" required />
+                            </div>
+                        </div>
+
+                        <!-- Product Discount -->
+                        <div class="form-group row mt-2">
+                            <label for="product_discount" class="col-md-3 col-form-label">Discount (in %) :</label>
+                            <div class="input-group col-md-8">
+                                <input type="number" class="form-control" id="product_discount" value=""
+                                    name="product_discount" min="0" max="100" required />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row mt-2">
+                            <label for="insert_pictures" class="col-md-3 col-form-label">Product Picture 1</label>
+                            <div class="input-group col-md-8">
+                                <input type="file" id="insert_pictures" name="img1"/>
+                            </div>
+                        </div>
+
+                        <!-- Insert Picture 2 -->
+                        <div class="form-group row mt-2">
+                            <label for="insert_pictures" class="col-md-3 col-form-label">Product Picture 2</label>
+                            <div class="input-group col-md-8">
+                                <input type="file" id="insert_pictures" name="img2"/>
+                            </div>
+                        </div>
+
+                        <!-- Insert Picture 3 -->
+                        <div class="form-group row mt-2">
+                            <label for="insert_pictures" class="col-md-3 col-form-label">Product Picture 3</label>
+                            <div class="input-group col-md-8">
+                                <input type="file" id="insert_pictures" name="img3"/>
+                            </div>
+                        </div>
+
+                        <!-- Register Button -->
+                        <div class="form-group row mt-2">
+                            <div class="input-group col-md-8 offset-md-3">
+                                <input type="submit" class="btn btn-block" value="REGISTER" />
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock body %}
+   

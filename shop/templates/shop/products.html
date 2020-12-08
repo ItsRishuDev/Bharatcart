@@ -1,0 +1,61 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Product
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+{% endblock css %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2 class="section_head">CATEGORIES</h2>
+
+    <div class="container category_section">
+      <div class="row">
+      {% for cat in category %}
+        <div class="col-md-4 col-sm-6 px-lg-4 mt-lg-5 mt-4">
+          <a href="/category/{{cat.category_id}}">
+            <img src="/media/{{cat.category_img}}" class="d-block" />
+            <p>{{cat.category_name}}</p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+    <div class="container mt-5">
+    <h2 class="section_head">ALL PRODUCTS</h2>
+
+    <div class="container mt-5 products_section">
+      <div class="row">
+      {% for item in product %}
+        <div class="col-lg-3 col-md-4 col-sm-6 px-lg-4">
+        <a href="/productdetail/{{item.product_id}}">
+          <div class="card">
+            <img src="/media/{{item.product_img_1}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">
+              <h5 class="product_name">{{item.product_name}}</h5>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-o"></i>
+              </div>
+              <p class="product_price">&#x20B9;  {{item.product_price}}</p>
+              </p>
+            </div>
+          </div>
+        </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock body %}

@@ -1,0 +1,107 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+My Acocunt
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+{% endblock css %}
+
+
+{% block body %}
+
+    <!-- || Page Heading -->
+    <div class="container mt-5">
+        <p class="section_head">My Account</p>
+    </div>
+
+    <!-- || User Account Details -->
+    <main>
+        <div class="container my-5 bg-light">
+
+            <form action="" class="px-4 py-5" method="POST">
+            {% csrf_token %}
+                <div class="mb-3">
+                    <h5>Login Contact:</h5>
+                    <p class="text-success">{{user.first_name}}</p>
+                </div>
+
+                <div class="mb-3">
+                    <h5>Last Login:</h5>
+                    <p class="text-success">{{user.last_login}}</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <div class="form-group">
+                            <label for="user_name" class="text-dark">Name</label>
+                            <input type="text" class="form-control" id="user_name" value="{{user.first_name}}" name="user_name"
+                                placeholder="User Name" required />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-3">
+                        <div class="form-group">
+                            <label for="user_contact" class="text-dark">Contact Number / Identity</label>
+                            <input type="text" class="form-control" name="user_contact" id="user_contact"
+                                value="{{user.username}}" title="Mobile Number Cannot be Change" placeholder="Contact Number"
+                                readonly />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-3">
+                        <div class="form-group">
+                            <label for="user_email" class="text-dark">Email Address</label>
+                            <input type="email" class="form-control" id="user_email" value="{{user.email}}"
+                                placeholder="example@gmail.com" name="user_email" required />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-3"></div>
+
+                    <div class="col-12 mt-3">
+                        <label for="user_address" class="text-dark mb-1">Address</label>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <input type="text" id="address_street" name="address_street" class="form-control"
+                            placeholder="Street" value="{{address.address}}" required />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <input type="text" id="address_city" name="address_city" class="form-control" placeholder="City"
+                            value="{{address.city}}" required />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <input type="text" id="address_state" name="address_state" class="form-control"
+                            placeholder="State" value="{{address.state}}" minlength="6" maxlength="6" required />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <input type="number" id="address_zip" name="address_zip" class="form-control"
+                            placeholder="Zip Code (6 Digits)" value="{{address.pincode}}" minlength="6" maxlength="6" required />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <input type="text" id="address_country" name="address_country" class="form-control"
+                            placeholder="Country" value="India" readonly />
+                    </div>
+
+                    <div class="col-md-6 mt-3">
+                        <input type="submit" class="btn btn-block" value="UPDATE PROFILE" />
+                    </div>
+
+                    <div class="col-md-6 mt-3">
+                        <input type="reset" class="btn btn-block btn-outline-info"
+                            style="border-color: #17A2B8 !important;" value="CANCEL" />
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock body %}

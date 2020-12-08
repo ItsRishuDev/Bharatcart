@@ -1,0 +1,302 @@
+@charset "utf-8";
+
+/* --- Common  --- */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+::placeholder {
+    color:rgba(128,128,128,0.8) !important;
+}
+
+label {
+    color: grey;
+    font-size: 15px !important;
+    margin-bottom: -5px !important;
+}
+
+textarea {
+    font-size: 15px !important;
+}
+
+button:focus, .btn:focus, a:focus, input:focus {
+    outline: none !important;
+}
+
+label.custom-control-label {
+    color: black;
+}
+
+.active {
+    color: rebeccapurple !important;
+}
+
+
+/* --- Quick Links --- */
+.section_heading {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #00695c !important;
+}
+
+.quick__links a {
+    color: black;
+    line-height: 2.5;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.quick__links a:hover {
+    color: rebeccapurple;
+}
+
+.quick__links li {
+    list-style-type: circle;
+}
+
+@media screen and (max-width: 767px) {
+    .quick__links li {
+        list-style-type: none;
+    }
+
+    label {
+        justify-content: left !important;
+    }
+
+    .section_heading {
+        text-align: center;
+    }
+}
+
+input[type="submit"] {
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-variant: small-caps;
+    background: #00838f;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    color: white;
+    background: #006064;
+}
+
+input, select, textarea {
+    border-radius: 0 !important;
+    border: 1.35px solid rgba(0,0,0,0.15) !important;
+}
+
+
+/* --- Business Login Signup Page --- */
+.business__form__body {
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 15px lightgrey;
+    box-shadow: 0px 0px 15px lightgrey;
+}
+
+.business__form__heading {
+    color: #00838f;
+    font-weight: bold;
+}
+
+.business__form__heading span {
+    padding-right: 60px;
+    padding-bottom: 7px;
+    border-bottom: 3.5px solid grey;
+}
+
+@media screen and (max-width: 576px) {
+    .business__form__heading {
+        text-align: center;
+    }
+
+    .business__form__heading span {
+        padding-right: 0px;
+        padding-bottom: 4px;
+        border-bottom: 3px solid grey;
+    }
+}
+
+.business__form__save__btn,
+.business__form__cancel__btn {
+    float: right;
+    margin-left: 5px;
+    color: white !important;
+    transition: 0.5s;
+    font-size: 0.88em;
+    letter-spacing: 1px;
+    padding: 5px 25px;
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .business__form__save__btn,
+    .business__form__cancel__btn {
+        float: left;
+        margin-left: 0;
+        margin-right: 5px;
+    }
+}
+
+.business__form__save__btn {
+    background-color: #00838f !important;
+}
+
+.business__form__cancel__btn {
+    background-color: #ec407a !important;
+}
+
+.business__form__save__btn:hover {
+    background: #006064;
+    color: white;
+}
+
+.business__form__cancel__btn:hover {
+    background: #c2185b;
+    color: white;
+}
+
+#business_login_section {
+    display: none;
+}
+
+.business_login_signup_links {
+    text-align: center;
+}
+
+.business_login_signup_links a {
+    color: #00838f;
+    font-size: 23px;
+    font-weight: 500;
+    margin: 0 20px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: 0.5s;
+}
+
+.business_login_signup_links a:first-child {
+    border-bottom: 3px solid grey;
+    color: rebeccapurple;
+}
+
+.business_login_signup_links a:hover {
+    color: #006064;
+    border-color: #006064;
+}
+
+.business_login_signup_links span {
+    color: grey;
+    font-size: 40px;
+    font-weight: 100;
+    vertical-align: -8px;
+}
+
+
+/* --- Seller Products Page --- */
+.dashboard-table thead th,
+.dashboard-table thead td {
+    color: #006064;
+    font-weight: 500 !important;
+}
+
+.dashboard-table img {
+    width: 160px;
+    height: auto;
+}
+
+.dashboard-table input {
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 1em;
+    border: 1px solid #006064 !important;
+}
+
+@media screen and (max-width: 700px) {
+    .dashboard-table tbody {
+        font-size: 0.8em;
+    }
+}
+
+.bg-light {
+    background: #e0f2f1 !important;
+}
+
+
+/* --- Ongoing Orders Page & Past Orders Page --- */
+.table_grid1,
+.table_grid2 {
+    background: #b2dfdb;
+    border: 2.5px solid #006064;
+}
+
+@media screen and (min-width: 992px) {
+    .table_grid1 {
+        border-right: none;
+    }
+
+    .table_grid2 {
+        border-left: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .table_grid1 {
+        border-bottom: none;
+    }
+
+    .table_grid2 {
+        border-top: none;
+    }
+}
+
+.orders_table_head {
+    padding: 12px;
+    letter-spacing: 0.7px;
+    background: #006064;
+    color: white;
+}
+
+@media screen and (max-width: 1200px) {
+    .orders_table_head {
+        padding: 12px 5px;
+    }
+}
+
+.orders_table td {
+    font-size: 13px;
+    padding: 8px 8px;
+}
+
+@media screen and (max-width: 991px) {
+    .orders_table td {
+        padding: 5px;
+    }
+
+    .orders_table_head span {
+        float: right;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+}
+
+.orders_table tr:nth-of-type(2n) {
+    background: #e0f2f1;
+}
+
+.orders_table td:nth-child(3),
+.orders_table td:nth-child(4) {
+    text-align: center;
+}
+
+.order_address {
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.order_address li:last-child {
+    font-weight: 600;
+    font-size: medium;
+}

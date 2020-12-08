@@ -1,0 +1,66 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Product Detail
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+{% endblock css %}
+
+
+{% block body %}  
+    <!-- Cart Page Heading -->
+    <div class="my-5">
+        <p class="section_head">MY CART</p>
+    </div>
+
+    <!-- Registered Products Table -->
+    <div class="container-fluid">
+        <div class="table-responsive px-3 dashboard-table">
+            <table class="table text-center table-fit">
+                <thead>
+                    <tr>
+                        <th scope="col" class="align-middle">Product Image</th>
+                        <th scope="col" class="align-middle">Product Name</th>
+                        <th scope="col" class="align-middle">Product Price</th>
+                        <th scope="col" class="align-middle">Quantity (in pcs.)</th>
+                        <th scope="col" class="align-middle">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in cartitem %}
+                    <tr>
+                        <th scope="row">
+                            <img src="/media/{{item.prod_id.product_img_1}}" class="img-fluid" alt="{{item.prod_id.product_name}}" />
+                        </th>
+                        <td class="align-middle">{{item.prod_id.product_name}}</td>
+                        <td class="align-middle">{{item.prod_id.product_price}}</td>
+                        <td class="align-middle">
+                            {{item.quantity}}
+                        </td>
+                        <td class="align-middle">
+                            <a href="/remove/{{item.cart_id}}" class="btn btn-secondary p-0 px-2" title="Remove Product">x</a>
+                        </td>
+                    </tr>
+                {% endfor %}        
+                </tbody>
+            </table>
+        </div>
+        {% if cartitem %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 offset-lg-7 offset-md-4 mb-5 cart_bill">
+                    <hr>
+                    <p>Subtotal <span>&#8377; {{subtotal}}</span></p>
+                    <p>Tax <span>&#8377; {{tax}}</span></p>
+                    <p>Total <span>&#8377; {{total}}</span></p>
+                    <a href="/checkout" class="btn btn-success rounded-0 btn-block">CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock body %}

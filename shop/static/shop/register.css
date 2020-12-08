@@ -1,0 +1,163 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@500;600;700&family=Raleway:wght@300;400&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ----------- Dismiss Button ----------- */
+.dismiss-button-section {
+    margin: 5px 0;
+}
+
+.dismiss-button {
+    font-size: 30px;
+    float: right;
+    padding: 5px 4%;
+    cursor: pointer;
+    color: grey;
+}
+
+.dismiss-button:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* ----------- Login and Signup Section ----------- */
+.login-section,
+.signup-section {
+    margin: auto;
+    margin-top: 35px;
+    width: 30%;
+    clear: both;
+    font-family: 'Raleway', sans-serif;
+}
+
+.signup-section {
+    margin-top: 20px;
+}
+
+.login-signup-heading {
+    font-family: 'MuseoModerno', 'Arial';
+    font-size: 50px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.login-signup-sub-heading {
+    text-align: center;
+    font-size: 19px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 10px;
+}
+
+.login-signup-button {
+    background: #FE8340;
+    color: white;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    padding: 13px;
+    transition: 0.5s;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.login-signup-button:hover {
+    background: #ef6c00;
+}
+
+.login-signup-sub-heading a {
+    color: #FE8340;
+}
+
+.form-group {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form .form-group {
+    margin-top: 50px;
+}
+
+input {
+    font-size: 17px;
+    border: none;
+    width: 100%;
+    border-bottom: 1.5px solid grey;
+    font-family: 'Raleway', sans-serif;
+    padding: 8px 8px;
+}
+
+input:focus {
+    border-bottom-color: #FE8340;
+}
+
+button:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.45);
+    padding-right: 5px;
+}
+
+a.forget-password {
+    text-decoration: underline;
+    transition: 0.5s;
+    margin-bottom: 20px;
+    margin-left: -65%;
+}
+
+@media screen and (max-width: 575px) {
+    a.forget-password {
+        margin-left: -50%;
+    }
+}
+
+a.forget-password:hover {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 1200px) {
+    .login-form {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .login-form {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .login-form {
+        width: 80%;
+    }
+}
+
+
+/* ----------- Business Account Section ----------- */
+.business_acc_section {
+    margin-top: 15px !important;
+}
+
+.business_acc_btn {
+    padding: 13px;
+    background: #455a64;
+    width: 100%;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: white;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+.business_acc_btn:hover {
+    background: #37474f;
+    color: white;
+}

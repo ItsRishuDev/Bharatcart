@@ -1,0 +1,264 @@
+@charset "utf-8";
+
+/* ------- || Commong Styles -------  */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    background: #e0f2f1;
+}
+
+::selection {
+    background: grey;
+    color: white;
+}
+
+input:focus, input:active {
+    outline: none !important;
+}
+
+input[type="file"] {
+    border: none !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.hide{
+    display: none;
+}
+
+
+/* ------- || Navigation Bar -------  */
+.navbar li {
+    margin-right: 20px;
+}
+
+.home_banner h1 {
+    font-weight: bolder;
+    font-size: 3em;
+}
+
+.home_banner .btn, .offer_banner .btn, .single_product_details .btn {
+    background: #138808;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 20px 0;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.home_banner .btn:hover, .offer_banner .btn:hover, .single_product_details .btn:hover {
+    background: #000080;
+    color: #fff;
+}
+
+
+/* ------- || Section Heading -------  */
+.section_head{
+    text-align: center;
+    position: relative;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: bolder;
+    color: #555;
+}
+
+.section_head::after{
+    content: '';
+    background:#138808;
+    width: 80px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* ------- || Category Section -------  */
+.category_section p {
+    text-align: center;
+    font-size: larger;
+    font-weight: 600;
+    padding-top: 10px;
+    color: rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.category_section .col-md-4 {
+    transition: 0.5s;
+}
+
+.category_section .col-md-4:hover {
+    transform: translateY(-5px);
+}
+
+.category_section img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* ------- || Featured and Latest Products Section ------- */
+.products_section .col-lg-3 {
+    transition: 0.5s;
+}
+
+.products_section .card {
+    border: none !important;
+}
+
+.products_section .col-lg-3:hover {
+    transform: translateY(-5px);
+}
+
+.products_section .card-text {
+    margin-top: -20px;
+}
+
+.products_section .product_name {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.products_section .product_price {
+    font-size: smaller;
+}
+
+.products_section .ratings {
+    margin-top: -5px !important;
+}
+
+.products_section .ratings .fa{
+    color: #138808;
+}
+
+
+/* ------- || Offer Banner Image -------  */
+.offer_banner {
+    background: radial-gradient(#ffffff, #ffa500);
+    padding-top: 70px;
+    padding-bottom: 70px;
+    margin-top: 30px;
+}
+
+.offer_banner_img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+/* Line Number 46 */
+.offer_banner .offer_product_name {
+    font-size: 50px;
+}
+
+.offer_banner .offer_description {
+    font-size: smaller;
+    color: grey;
+    margin-top: 20px;
+    line-height: 2;
+}
+
+
+/* ------- || Footer Section -------  */
+.footer_section {
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+}
+
+.footer_section img {
+    width: 200px;
+    display: block;
+    margin: auto;
+}
+
+.footer_section ul {
+    font-size: 15px;
+    font-weight: lighter;
+    line-height: 2;
+}
+
+.footer_section ul a {
+    color: rgba(255,255,255,0.45);
+    transition: 0.2s;
+}
+
+.footer_section ul a:hover {
+    color: lightgray;
+}
+
+.footer_section hr {
+    border: 0.6px solid lightgray;
+}
+
+.footer_section .copyright_policy {
+    text-align: center;
+    font-size: smaller;
+}
+
+
+/* ------- Cart Page ------- */
+.cart_bill hr {
+    border: 2px solid #138808;
+}
+
+.cart_bill span {
+    float: right;
+}
+
+
+/* ------------------------testimonial-------------------------  */
+/* .testimonial{
+    padding-top: 100px;
+}
+
+.testimonial .my-col-3{
+    text-align: center;
+    padding: 40px 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.testimonial .my-col-3 img{
+    width: 50px;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+
+.testimonial .my-col-3:hover{
+    transform: translateY(-10px);
+}
+
+.fa .fa-quote-left{
+    font-size: 24px;
+    color:#138808;
+}
+
+.my-col-3 .my-p{
+    font-size: 12px;
+    margin: 12px 0;
+    color: #777;
+}
+
+.testimonial .my-col-3 .my-h3{
+    font-weight: 600;
+    color: #555;
+    font-size: 16px;
+} */

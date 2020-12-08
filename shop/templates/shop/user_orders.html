@@ -1,0 +1,70 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+My Orders
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+{% endblock css %}
+
+
+{% block body %}
+
+    <!-- || USER ORDERS -->
+    <div class="container my-5">
+        <!-- Orders Page Heading -->
+        <div class="my-5">
+            <p class="section_head">MY ORDERS</p>
+        </div>
+
+        <!-- Registered Products Table -->
+        <div class="container-fluid">
+            <div class="table-responsive px-3 dashboard-table">
+                <table class="table text-center table-fit">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="align-middle">Product Image</th>
+                            <th scope="col" class="align-middle">Product Name</th>
+                            <th scope="col" class="align-middle">Product Price</th>
+                            <th scope="col" class="align-middle">Quantity (in pcs.)</th>
+                            <th scope="col" class="align-middle">Order Date</th>
+                            <th scope="col" class="align-middle">Payment Status</th>
+                            <th scope="col" class="align-middle">Order Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders reversed %}
+                        <tr>
+                            <th scope="row">
+                                <img src="/media/{{order.product.product_img_1}}" class="img-fluid" alt="{{order.product_id.product_name}}" />
+                            </th>
+                            <td class="align-middle">{{order.product.product_name}}</td>
+                            <td class="align-middle">Rs. {{order.product.product_price}}</td>
+                            <td class="align-middle">{{order.quantity}} pcs.</td>
+                            <td class="align-middle">{{order.order_date}}</td>
+                            <td class="align-middle font-weight-bold">{% if order.paid is True %}
+                            Payment Done
+                            {% else %}
+                            Payment not done
+                            {% endif %}</td>
+                            <td class="align-middle font-weight-bold">{% if order.delivered is True %}
+                            Delivered
+                            {% else %}
+                            Shipped
+                            {% endif %}</td>
+                        </tr>
+                    {% endfor %}    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% comment %} {% else %}
+        <h3 lca>No orders yet</h3>
+        <br>
+        <a href="/product" class="btn btn-success"></a>
+        {% endif %} {% endcomment %}
+    </div>
+{% endblock body %}

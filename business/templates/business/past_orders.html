@@ -1,0 +1,84 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Past Order
+{% endblock title %}
+
+{% block css %}
+ <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static 'shop/business.css' %}">
+{% endblock css %}
+{% block body %}
+
+    <!-- --------------Business Account Dashboard-------------- -->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-3 bg-light pt-3">
+                <div class="py-4">
+                    <h4 class="section_heading mb-3">Quick Links</h4>
+                    <ul class="quick__links ml-4">
+                        <li><a href="/business/account">My Account</a></li>
+                        <li><a href="/business/productregister">Register New Item</a></li>
+                        <li><a href="/business/registeredproduct">Product Registered</a></li>
+                        <li><a href="/business/ongoingorder">Ongoing Orders</a></li>
+                        <li><a href="/business/pastorder" class="active">Past Orders</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Products Details -->
+            <div class="col-lg-10 col-md-9 pt-3 pb-lg-5 pb-4">
+                <h4 class="section_heading mt-4">PAST ORDERS</h4>
+
+                <!-- Order Tables -->
+                <div class="container px-lg-4 mt-4">
+                    <div class="row">
+                    {% for order in orders %}
+                        {% if order.delivered is True %}
+                        <div class="col-lg-8 p-0 table_grid1">
+                            <h6 class="orders_table_head">ORDER NUMBER : <span>#{{order.order_id}}</span></h6>
+
+                            <table class="table table-borderless orders_table">
+                                <tr>
+                                    <td>{{order.product.product_name}}</td>
+                                    <td>{{order.quantity}} Pcs.</td>
+                                    <td>Rs. {{order.product.product_price}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="col-lg-4 p-0 table_grid2">
+                            <h6 class="orders_table_head">TOTAL AMOUNT : <span>Rs. {% widthratio order.product.product_price 1 order.quantity %}</span></h6>
+                            <ul class="p-3 order_address pl-md-4">
+                                <li>{{order.name}}</li>
+                                <li>{{order.address.address}}</li>
+                                <li>{{order.address.city}}, {{order.address.state}}</li>
+                                <li>Pin Code - {{order.address.pincode}}</li>
+                                <li>Mobile - +91 {{order.phone}}</li>
+                                <li>Order Date - {{order.order_date}}</li>
+                                <li>Payment Status -> {% if order.paid is True %}
+                                    Payment Done
+                                    {% else %}
+                                    Payment not done
+                                    {% endif %}
+                                </li>
+                                <li>Delivery Status -> Delivered
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    {% endfor %}    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock body %}

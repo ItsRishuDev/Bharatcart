@@ -1,0 +1,205 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block title %}
+Business Register
+{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'shop/business.css' %} ">
+{% endblock css %}
+
+{% block body %}
+    <!-- Seller Registration / Login Option Section -->
+    <section>
+        <div class="container my-5 business_login_signup_links">
+            <a href="#" id="business_signup_link" onclick="businessLoginSignup('signup')">Signup</a>
+            <span> | </span>
+            <a href="#" id="business_login_link" onclick="businessLoginSignup('login')">Login</a>
+        </div>
+    </section>
+
+    <!-- Seller Registration Section -->
+    <section id="business_signup_section">
+        <div class="container my-5">
+            <div class="business__form__body p-lg-4 p-3">
+                <!-- Form Heading -->
+                <div class="mb-md-5 mb-4">
+                    <h4 class="business__form__heading"><span>BUSINESS SIGNUP</span></h4>
+                </div>
+
+                <!-- Form Fields -->
+                <form action="" method="POST" name="register_seller">
+                    {% csrf_token %}
+                    <!-- Business Name -->
+                    <div class="form-group row">
+                        <label for="business_name" class="col-lg-3 col-form-label">Business Name :
+                            <span class="text-danger" id="business_name_req">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="business_name" value="" name="business_name"
+                                placeholder="Business Name..." required />
+
+                        </div>
+                    </div>
+
+                    <!-- Seller Name -->
+                    <div class="form-group row">
+                        <label for="seller_name" class="col-lg-3 col-form-label">Seller Name :
+                            <span class="text-danger" id="seller_name_req">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="seller_name" value="" name="seller_name"
+                                placeholder="Seller Name..." required />
+
+                        </div>
+                    </div>
+
+                    <!-- Mobile Number -->
+                    <div class="form-group row">
+                        <label for="contact_number" class="col-lg-3 col-form-label">Mobile Number :
+                            <span class="text-danger" id="contact_number_req">*</span>
+                        </label>
+                        <div class="col-lg-9 input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="country_code">+91</span>
+                            </div>
+                            <input type="tel" class="form-control" placeholder="Mobile Number..." value=""
+                                name="contact_number" id="contact_number" aria-describedby="country_code" maxlength="10"
+                                minlength="10" required />
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group row">
+                        <label for="password" class="col-lg-3 col-form-label">Password :
+                            <span class="text-danger" id="password_req">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="password" class="form-control" id="password" value="" name="password"
+                                placeholder="Password" />
+                        </div>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="form-group row">
+                        <label for="email_address" class="col-lg-3 col-form-label">Email Address :
+                            <span class="text-danger" id="email_address_req">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="email" class="form-control" id="email_address" value="" name="email_address"
+                                placeholder="example@gmail.com" />
+                        </div>
+                    </div>
+
+                    <!-- Serviceable Area -->
+                    <div class="form-group row">
+                        <label for="service_area" class="col-lg-3 col-form-label">Serviceable Area (km):
+                            <span class="text-danger" id="service_area_req">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <input type="number" class="form-control" id="service_area" value="" name="service_area"
+                                required min="0" />
+                        </div>
+                    </div>
+
+                    <!-- Service Description -->
+                    <div class="form-group row">
+                        <label for="service_description" class="col-lg-3 col-form-label">Service Description:
+                            <span class="text-danger" id="service_description_req">*</span>
+                        </label>
+                        <div class="col-lg-9">
+                            <textarea name="service_description" class="form-control" id="service_description" rows="3"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Home Delivery Available -->
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Home Delivery Available :
+                            <span class="text-danger" id="home_delivery_req">*</span>
+                        </label>
+                        <div class="col-lg-9 mt-2">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input value="True" type="radio" id="home_delivery_yes" name="home_delivery_available"
+                                    class="custom-control-input" required />
+                                <label class="custom-control-label" for="home_delivery_yes">YES</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input value="True" type="radio" id="home_delivery_no" name="home_delivery_available"
+                                    class="custom-control-input" checked required />
+                                <label class="custom-control-label" for="home_delivery_no">NO</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save, Cancel Button -->
+                    <div class="form-group row">
+                        <div class="col-md-6 offset-md-6">
+                            <button type="submit" class="btn business__form__save__btn">SAVE AS</button>
+                            <button type="reset" class="btn business__form__cancel__btn">CANCEL</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Login Section -->
+    <section id="business_login_section">
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="business__form__body p-lg-4 p-3">
+                        <!-- Form Heading -->
+                        <div class="mb-md-5 mb-4">
+                            <h4 class="business__form__heading"><span>BUSINESS LOGIN</span></h4>
+                        </div>
+
+                        <!-- Form Fields -->
+                        <form name="login_seller" action="/business/login" method='POST'>
+                            {% csrf_token %}
+                            <!-- Mobile Number -->
+                            <div class="form-group row">
+                                <label for="login_contact_number" class="col-lg-4 text-lg-right col-form-label">Mobile
+                                    Number :
+                                    <span class="text-danger" id="login_contact_number_req">*</span>
+                                </label>
+                                <div class="col-lg-8 input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="country_code">+91</span>
+                                    </div>
+                                    <input type="tel" class="form-control" placeholder="10 Digit Mobile Number..."
+                                        value="" name="login_contact_number" id="login_contact_number"
+                                        aria-describedby="country_code" pattern="[1-9]{1}[0-9]{9}" required />
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group row">
+                                <label for="business_login_password"
+                                    class="col-lg-4 text-lg-right col-form-label">Password :
+                                    <span class="text-danger" id="business_login_password_req">*</span>
+                                </label>
+                                <div class="col-lg-8">
+                                    <input type="password" class="form-control" id="business_login_password" value=""
+                                        name="business_login_password" placeholder="Password..." minlength="4"
+                                        required />
+                                </div>
+                            </div>
+
+                            <!-- Save, Cancel Button -->
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-6">
+                                    <button type="submit" class="btn business__form__save__btn">LOGIN</button>
+                                    <button type="reset" class="btn business__form__cancel__btn">RESET</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}

@@ -1,0 +1,47 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Categorised Products
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+{% endblock css %}
+
+<body>
+
+
+{% block body %}
+    <div class="container mt-5">
+    <h2 class="section_head">{{category}} Category</h2>
+
+    <div class="container mt-5 products_section">
+      <div class="row">
+      {% for item in product %}
+        <div class="col-lg-3 col-md-4 col-sm-6 px-lg-4">
+        <a href="/productdetail/{{item.product_id}}">
+          <div class="card">
+            <img src="/media/{{item.product_img_1}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">
+              <h5 class="product_name">{{item.product_name}}</h5>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-o"></i>
+              </div>
+              <p class="product_price">&#x20B9;  {{item.product_price}}</p>
+              </p>
+            </div>
+          </div>
+        </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock body %}

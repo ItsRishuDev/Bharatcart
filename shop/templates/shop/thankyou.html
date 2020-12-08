@@ -1,0 +1,28 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Success
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+{% endblock css %}
+
+
+{% block body %}
+
+    <!-- || Thankyou Note -->
+    <main>
+        <div class="container my-5 text-center">
+            <img src="{% static 'shop/images/right.png' %} " alt="" width="70px" height="auto" class="d-block mx-auto" />
+            <p class="display-4 mt-3">Thank You!</p>
+            <p class="text-dark">Your Order is Successfully Placed</p>
+            
+            <div class="">
+                <a href="/product" class="btn btn-info mt-3">Back To Shop</a>
+            </div>
+        </div>
+    </main>
+{% endblock body %}

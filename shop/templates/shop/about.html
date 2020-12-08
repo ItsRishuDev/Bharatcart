@@ -1,0 +1,93 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+About Us
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+
+<style>
+        .about_image,
+        .our_team img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+            align-items: center;
+        }
+
+        .our_team img {
+            height: 250px !important;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+{% endblock css %}
+
+{% block body %}
+    <!-- || ABOUT Content -->
+    <main>
+        <div class="container-fluid">
+            <div class="row" style="background: radial-gradient(#ffffff, #e0f2f1);">
+                <!-- Textual Content -->
+                <div class="col-lg-7 px-5 py-4 order-lg-1 order-2">
+                    <h3 class="section_head">About Us</h3>
+
+                    <p class="mt-5 text-muted text-lg-left text-center px-lg-4" style="line-height: 2;">E-commerce
+                        (electronic commerce) is the activity of electronically buying or selling of products on online
+                        services or over the Internet. Electronic commerce draws on technologies such as mobile
+                        commerce, electronic funds transfer, supply chain management, Internet marketing, online
+                        transaction processing, electronic data interchange (EDI), inventory management systems, and
+                        automated data collection systems. E-commerce is in turn driven by the technological advances of
+                        the semiconductor industry, and is the largest sector of the electronics industry.</p>
+                </div>
+
+                <!-- Banner -->
+                <div class="col-lg-5 col-sm-8 col-10 offset-lg-0 offset-sm-2 offset-1 p-5 order-lg-2 order-1">
+                    <img src="{% static 'shop/images/madeinindia.png' %} " class="about_image" alt="Main Image" />
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- || OUR TEAM -->
+    <section>
+        <div class="container my-5 our_team products_section">
+            <div class="d-block mb-5 mx-auto">
+                <p class="section_head">Our TEAM</p>
+            </div>
+
+            <div class="row">
+
+                <!-- Rishabh Soni -->
+                <div class="col-lg-3 col-md-4 col-sm-6 px-4 mt-3">
+                    <img src="{% static '/shop/images/Rishabh_Soni .jpg' %}" alt="Rishabh Soni" />
+                    <p class="pt-3 font-weight-bolder text-center text-muted">Rishabh Soni</p>
+                </div>
+
+                <!-- Rishi Soni -->
+                <div class="col-lg-3 col-md-4 col-sm-6 px-4 mt-3">
+                    <img src="{% static 'shop/images/Rishi_Soni.jpg' %}" alt="Rishi Soni" />
+                    <p class="pt-3 font-weight-bolder text-center text-muted">Rishi Soni</p>
+                </div>
+
+                <!-- Rishabh Vyas -->
+                <div class="col-lg-3 col-md-4 col-sm-6 px-4 mt-3">
+                    <img src="{% static 'shop/images/Rishabh_Vyas.jpg' %}" alt="Rishabh Vyas" />
+                    <p class="pt-3 font-weight-bolder text-center text-muted">Rishabh Vyas</p>
+                </div>
+
+                <!-- Rahul Upadhyay -->
+                <div class="col-lg-3 col-md-4 col-sm-6 px-4 mt-3">
+                    <img src="{% static 'shop/images/Rahul_Upadhyay.jpeg' %}" alt="Rahul Upadhyay" />
+                    <p class="pt-3 font-weight-bolder text-center text-muted">Rahul Upadhyay</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}

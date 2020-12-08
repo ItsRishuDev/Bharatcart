@@ -1,0 +1,140 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Checkout
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/business.css'%} ">
+
+<style>
+    .checkout_sections {
+        -webkit-box-shadow: 0px 0px 5px lightgrey;
+        box-shadow: 0px 0px 5px lightgrey;
+    }
+</style>
+
+{% endblock css %}
+
+
+{% block body %}
+
+<!-- || Page Heading -->
+<div class="container my-4">
+    <div class="section_head">CHECKOUT</div>
+</div>
+
+<!-- || Checkout Content -->
+<main>
+    <div class="container mb-5">
+        <div class="row">
+
+            <div class="col-md-6 col-12">
+                <!-- Your Order -->
+                <div class="mt-5">
+                    <h5 class="mb-3 text-muted text-uppercase">Your Order</h5>
+                    <div class="checkout_sections py-2">
+                        <div class="container py-4 px-sm-4 px-3">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <th>Product</th>
+                                    <th>Total</th>
+                                </thead>
+                                <tbody>
+                                    {% for item in cartitem %}
+                                    <tr>
+                                        <td>{{item.prod_id.product_name}} x {{item.quantity}}</td>
+                                        <td>{{item.prod_id.product_price}}</td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    <tr style="background: aliceblue;">
+                                        <th>Order Total</th>
+                                        <th>{{total}}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+<!-- || Billing Details -->
+            <div class="col-md-6 col-12 mt-5">
+                <h5 class="mb-3 text-muted text-uppercase">Billing Details</h5>
+                <div class="checkout_sections pt-3 pb-4">
+                    <form action="/payment/" method="POST">
+                    {% csrf_token %}
+                        <div class="form-group px-sm-4 px-3 pt-4">
+                            <label for="country">Country <span class="text-danger">*</span></label>
+                            <select class="form-control required" id="country1">
+                                <option value="India" selected>India</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group px-sm-4 px-3 pt-1">
+
+                            <label for="fName">Name <span class="text-danger">*</span></label>
+                            <input type="text" name='name' value="{{request.user.first_name}}" class="form-control" required />
+
+                        </div>
+
+                        <div class="form-group px-sm-4 px-3 pt-1">
+                            <label for="address1">Address <span class="text-danger">*</span></label>
+                            <input type="text" name='address' value="{{address.address}}" class="form-control text-secondary" placeholder="Street Address"
+                                required />
+
+                            <div class="form-group pt-3">
+                                <input type="text" name='city' value="{{address.city}}" class="form-control text-secondary"
+                                    placeholder="City" />
+                            </div>
+                        </div>
+
+                        <div class="row pt-1 px-sm-4 px-3">
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="state1">State<span class="text-danger">*</span></label>
+                                    <input type="text" name='state' value="{{address.state}}" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="postal">Postal / Zip Code<span class="text-danger">*</span></label>
+                                    <input type="text" name='pincode' value="{{address.pincode}}" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pt-1 px-sm-4 px-3">
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="state1">Email Address <span class="text-danger">*</span></label>
+                                    <input type="text" name='email' value="{{request.user.email}}" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="postal">Phone Number <span class="text-danger">*</span></label>
+                                    <input type="tel" name='number' value="{{request.user.username}}" maxlength="10" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mx-sm-5 mx-3 mb-5">
+                            <button type='submit' class="btn btn-block btn-success btn-lg rounded-0">
+                                <small class="orderBt text-white">PLACE ORDER</small>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+{% endblock body %}
